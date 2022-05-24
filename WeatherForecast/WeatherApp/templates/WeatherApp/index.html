@@ -22,12 +22,13 @@
         <div class="col-5 offset-1">
             <form action="" method="post">
                 {% csrf_token %}
-                <label for="city" style="font-family:Times New Roman">Город</label>
-                {{form name}}
+                <label for="city">Город</label>
+                {{form.name}}
+                <input type="submit" name="send" value="Узнать" class="mt-2 btn btn-danger">
             </form>
 
         </div>
-        <div class="col-4 offset-1">
+        <div class="col-4 offset-1" style="background-color:">
             <h1 style="font-family:Times New Roman">Информация</h1>
 
 

@@ -3,6 +3,7 @@ import requests
 from .models import City
 from .forms import CityForm
 
+
 def index(request):
     appid = 'b6c3d3a9e80e3c0a6ecbd639d520c528'
     url = 'https://api.openweathermap.org/data/2.5/weather?q={}&lang=ru&units=metric&appid=' + appid
@@ -11,7 +12,7 @@ def index(request):
         form = CityForm(request.POST)
         form.save()
 
-    form = CityForm
+    form = CityForm()
 
     cities = City.objects.all()
 
@@ -24,5 +25,8 @@ def index(request):
             'icon': res["weather"][0]["icon"]
         }
         all_cities.append(city_info)
-    context = {'all_info': all_cities, 'form': form}
+    context = {
+        'all_info': all_cities,
+        'form': form
+    }
     return render(request, 'WeatherApp/index.html', context)
